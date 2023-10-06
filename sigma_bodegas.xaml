@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="660,9018.4" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="801.6,11071.2" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -90,9 +90,10 @@
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.Python</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="670.4,8953.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="747.2,11006.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="tabla_facturas" />
       <Variable x:TypeArguments="sd:DataTable" Name="tabla_facturas_filtrada" />
@@ -102,7 +103,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="608,281.6" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" WorkbookPath="invoice_to_excel_sigma_bodegas.xlsx">
+    <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="684.8,281.6" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" WorkbookPath="invoice_to_excel_sigma_bodegas.xlsx">
       <ui:ExcelApplicationScope.Body>
         <ActivityAction x:TypeArguments="ui:WorkbookApplication">
           <ActivityAction.Argument>
@@ -125,33 +126,34 @@
         </ActivityAction>
       </ui:ExcelApplicationScope.Body>
     </ui:ExcelApplicationScope>
-    <Sequence DisplayName="proceso_sigma" sap:VirtualizedContainerService.HintSize="608,8395.2" sap2010:WorkflowViewState.IdRef="Sequence_3">
+    <Sequence DisplayName="proceso_sigma" sap:VirtualizedContainerService.HintSize="684.8,10447.2" sap2010:WorkflowViewState.IdRef="Sequence_3">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[tabla_facturas]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="545.6,8283.2" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+      <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[tabla_facturas]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="622.4,10335.2" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
         <ui:ForEachRow.Body>
           <ActivityAction x:TypeArguments="sd:DataRow">
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="sd:DataRow" Name="Row" />
             </ActivityAction.Argument>
-            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="512,8166.4" sap2010:WorkflowViewState.IdRef="Sequence_4">
+            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="588.8,10218.4" sap2010:WorkflowViewState.IdRef="Sequence_4">
               <Sequence.Variables>
                 <Variable x:TypeArguments="x:String" Default="18214" Name="CtaProveedor" />
                 <Variable x:TypeArguments="x:String" Default="CA" Name="TipoCbte" />
                 <Variable x:TypeArguments="x:String" Default="410080" Name="CtaDescComerciales" />
                 <Variable x:TypeArguments="x:String" Default="114010" Name="CtaIVAcred" />
                 <Variable x:TypeArguments="x:String" Default="428107" Name="CtaImpInternos" />
+                <Variable x:TypeArguments="x:Boolean" Name="comprobante_cargado" />
               </Sequence.Variables>
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:TypeInto DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" AlterIfDisabled="True" ClickBeforeTyping="True" DeselectAfter="True" DisplayName="empresa" EmptyField="True" sap:VirtualizedContainerService.HintSize="449.6,156" sap2010:WorkflowViewState.IdRef="TypeInto_20" SimulateType="False" Text="[row(&quot;Empresa&quot;).ToString]">
+              <ui:TypeInto DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" AlterIfDisabled="True" ClickBeforeTyping="True" DeselectAfter="True" DisplayName="empresa" EmptyField="True" sap:VirtualizedContainerService.HintSize="526.4,156" sap2010:WorkflowViewState.IdRef="TypeInto_20" SimulateType="False" Text="[row(&quot;Empresa&quot;).ToString]">
                 <ui:TypeInto.Target>
                   <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="8c27a731-840d-486a-9124-21a3485acd5c" InformativeScreenshot="e2c76482d660b2c98d653e70d7f2a028" Selector="&lt;wnd app='sigma_cambio_sm.exe' cls='TFPro_Carg' title='Carga de comprobantes de proveedores' /&gt;&lt;wnd cls='TkjvComboEdit' idx='2' /&gt;">
                     <ui:Target.TimeoutMS>
@@ -163,7 +165,7 @@
                   </ui:Target>
                 </ui:TypeInto.Target>
               </ui:TypeInto>
-              <ui:TypeInto DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" AlterIfDisabled="True" ClickBeforeTyping="True" DisplayName="sucursal" EmptyField="True" sap:VirtualizedContainerService.HintSize="449.6,156" sap2010:WorkflowViewState.IdRef="TypeInto_21" SendWindowMessages="True" SimulateType="False" Text="[row(&quot;Sucursal&quot;).ToString]">
+              <ui:TypeInto DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" AlterIfDisabled="True" ClickBeforeTyping="True" DisplayName="sucursal" EmptyField="True" sap:VirtualizedContainerService.HintSize="526.4,156" sap2010:WorkflowViewState.IdRef="TypeInto_21" SendWindowMessages="True" SimulateType="False" Text="[row(&quot;Sucursal&quot;).ToString]">
                 <ui:TypeInto.Target>
                   <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="c289907d-065c-4e2a-a51d-00e276849085" InformativeScreenshot="c8163fde398bef6a2adac1e025e6e94f" Selector="&lt;wnd app='sigma_cambio_sm.exe' cls='TFPro_Carg' title='Carga de comprobantes de proveedores' /&gt;&lt;wnd cls='TkjvComboEdit' /&gt;">
                     <ui:Target.TimeoutMS>
@@ -175,7 +177,7 @@
                   </ui:Target>
                 </ui:TypeInto.Target>
               </ui:TypeInto>
-              <ui:TypeInto DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" AlterIfDisabled="True" ClickBeforeTyping="True" DeselectAfter="True" DisplayName="Cuenta" EmptyField="True" sap:VirtualizedContainerService.HintSize="449.6,156" sap2010:WorkflowViewState.IdRef="TypeInto_1" Text="[row(&quot;ID Proveedor (texto)&quot;).ToString]">
+              <ui:TypeInto DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" AlterIfDisabled="True" ClickBeforeTyping="True" DeselectAfter="True" DisplayName="Cuenta" EmptyField="True" sap:VirtualizedContainerService.HintSize="526.4,156" sap2010:WorkflowViewState.IdRef="TypeInto_1" Text="[row(&quot;ID Proveedor (texto)&quot;).ToString]">
                 <ui:TypeInto.Target>
                   <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="25b69da1-1a03-4e19-a1ec-c8582a5987a3" InformativeScreenshot="8871827344935ef49623540180c3c4c8" Selector="&lt;wnd app='sigma_cambio_sm.exe' cls='TFPro_Carg' title='Carga de comprobantes de proveedores' /&gt;&lt;wnd cls='TkjvDBComboEdit' idx='5' /&gt;">
                     <ui:Target.TimeoutMS>
@@ -187,7 +189,7 @@
                   </ui:Target>
                 </ui:TypeInto.Target>
               </ui:TypeInto>
-              <ui:TypeInto DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" AlterIfDisabled="True" ClickBeforeTyping="True" DeselectAfter="True" DisplayName="fecha_factura" EmptyField="True" sap:VirtualizedContainerService.HintSize="449.6,156" sap2010:WorkflowViewState.IdRef="TypeInto_2" Text="[row(&quot;Fecha de Emision&quot;).tostring]">
+              <ui:TypeInto DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" AlterIfDisabled="True" ClickBeforeTyping="True" DeselectAfter="True" DisplayName="fecha_factura" EmptyField="True" sap:VirtualizedContainerService.HintSize="526.4,156" sap2010:WorkflowViewState.IdRef="TypeInto_2" Text="[row(&quot;Fecha de Emision&quot;).tostring]">
                 <ui:TypeInto.Target>
                   <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="64cbb6e1-79a3-44b2-8e40-0a49cc1aa815" InformativeScreenshot="bfbca07678ec0750d3a5a25b7d079df1" Selector="&lt;wnd app='sigma_cambio_sm.exe' cls='TFPro_Carg' title='Carga de comprobantes de proveedores' /&gt;&lt;wnd cls='TkjvDBDateEdit' idx='2' /&gt;">
                     <ui:Target.TimeoutMS>
@@ -199,7 +201,7 @@
                   </ui:Target>
                 </ui:TypeInto.Target>
               </ui:TypeInto>
-              <ui:TypeInto DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" AlterIfDisabled="True" ClickBeforeTyping="True" DeselectAfter="True" DisplayName="fecha_contable" EmptyField="True" sap:VirtualizedContainerService.HintSize="449.6,156" sap2010:WorkflowViewState.IdRef="TypeInto_3" Text="[row(&quot;Fecha de Emision&quot;).tostring]">
+              <ui:TypeInto DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" AlterIfDisabled="True" ClickBeforeTyping="True" DeselectAfter="True" DisplayName="fecha_contable" EmptyField="True" sap:VirtualizedContainerService.HintSize="526.4,156" sap2010:WorkflowViewState.IdRef="TypeInto_3" Text="[row(&quot;Fecha de Emision&quot;).tostring]">
                 <ui:TypeInto.Target>
                   <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="64cbb6e1-79a3-44b2-8e40-0a49cc1aa815" InformativeScreenshot="bfbca07678ec0750d3a5a25b7d079df1" Selector="&lt;wnd app='sigma_cambio_sm.exe' cls='TFPro_Carg' title='Carga de comprobantes de proveedores' /&gt;&lt;wnd cls='TkjvDBDateEdit' /&gt;">
                     <ui:Target.TimeoutMS>
@@ -211,7 +213,7 @@
                   </ui:Target>
                 </ui:TypeInto.Target>
               </ui:TypeInto>
-              <ui:TypeInto DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" AlterIfDisabled="True" ClickBeforeTyping="True" DeselectAfter="True" DisplayName="condicion_comprobante" EmptyField="True" sap:VirtualizedContainerService.HintSize="449.6,156" sap2010:WorkflowViewState.IdRef="TypeInto_4" Text="[TipoCbte]">
+              <ui:TypeInto DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" AlterIfDisabled="True" ClickBeforeTyping="True" DeselectAfter="True" DisplayName="condicion_comprobante" EmptyField="True" sap:VirtualizedContainerService.HintSize="526.4,156" sap2010:WorkflowViewState.IdRef="TypeInto_4" Text="[TipoCbte]">
                 <ui:TypeInto.Target>
                   <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="ebaad05b-92a1-4254-9df5-d9aa6a780b5b" InformativeScreenshot="8b9fb1d08a9dc6e681c0dc61d121deda" Selector="&lt;wnd app='sigma_cambio_sm.exe' cls='TFPro_Carg' title='Carga de comprobantes de proveedores' /&gt;&lt;wnd cls='TkjvDBComboEdit' /&gt;">
                     <ui:Target.TimeoutMS>
@@ -223,7 +225,7 @@
                   </ui:Target>
                 </ui:TypeInto.Target>
               </ui:TypeInto>
-              <ui:TypeInto DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" AlterIfDisabled="True" ClickBeforeTyping="True" DeselectAfter="True" DisplayName="numero_comprobante" EmptyField="True" sap:VirtualizedContainerService.HintSize="449.6,156" sap2010:WorkflowViewState.IdRef="TypeInto_5" Text="[row(&quot;Numero de Factura&quot;).ToString]">
+              <ui:TypeInto DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" AlterIfDisabled="True" ClickBeforeTyping="True" DeselectAfter="True" DisplayName="numero_comprobante" EmptyField="True" sap:VirtualizedContainerService.HintSize="526.4,156" sap2010:WorkflowViewState.IdRef="TypeInto_5" Text="[row(&quot;Numero de Factura&quot;).ToString]">
                 <ui:TypeInto.Target>
                   <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="af792bb9-4875-41dc-8311-e862dcf956fa" InformativeScreenshot="48d2359e6fa2db5e3802064663856232" Selector="&lt;wnd app='sigma_cambio_sm.exe' cls='TFPro_Carg' title='Carga de comprobantes de proveedores' /&gt;&lt;wnd cls='TDBEdit' idx='2' /&gt;">
                     <ui:Target.TimeoutMS>
@@ -235,21 +237,9 @@
                   </ui:Target>
                 </ui:TypeInto.Target>
               </ui:TypeInto>
-              <ui:TypeInto DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" AlterIfDisabled="True" ClickBeforeTyping="True" DeselectAfter="True" DisplayName="observacion" EmptyField="True" sap:VirtualizedContainerService.HintSize="449.6,156" sap2010:WorkflowViewState.IdRef="TypeInto_6" Text="[row(&quot;Observacion&quot;).ToString]">
-                <ui:TypeInto.Target>
-                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="af792bb9-4875-41dc-8311-e862dcf956fa" InformativeScreenshot="48d2359e6fa2db5e3802064663856232" Selector="&lt;wnd app='sigma_cambio_sm.exe' cls='TFPro_Carg' title='Carga de comprobantes de proveedores' /&gt;&lt;wnd cls='TDBEdit' /&gt;">
-                    <ui:Target.TimeoutMS>
-                      <InArgument x:TypeArguments="x:Int32" />
-                    </ui:Target.TimeoutMS>
-                    <ui:Target.WaitForReady>
-                      <InArgument x:TypeArguments="ui:WaitForReady" />
-                    </ui:Target.WaitForReady>
-                  </ui:Target>
-                </ui:TypeInto.Target>
-              </ui:TypeInto>
-              <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Send Hotkey" sap:VirtualizedContainerService.HintSize="449.6,133.6" sap2010:WorkflowViewState.IdRef="SendHotkey_2" Key="enter" KeyModifiers="None" SpecialKey="True">
+              <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Send Hotkey 'sigma_cambio_sm.exe Car...'" sap:VirtualizedContainerService.HintSize="526.4,154.4" sap2010:WorkflowViewState.IdRef="SendHotkey_26" Key="enter" KeyModifiers="None" SpecialKey="True">
                 <ui:SendHotkey.Target>
-                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="d5ebd81e-b993-457b-8a96-202a8decc422">
+                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="3f6a741b-2409-4a2c-8016-2b5990b052c8" InformativeScreenshot="fc7ad07eb445c5d3d043041198bdb7f8" Selector="&lt;wnd app='sigma_cambio_sm.exe' cls='TFPro_Carg' title='Carga de comprobantes de proveedores' /&gt;">
                     <ui:Target.TimeoutMS>
                       <InArgument x:TypeArguments="x:Int32" />
                     </ui:Target.TimeoutMS>
@@ -259,9 +249,12 @@
                   </ui:Target>
                 </ui:SendHotkey.Target>
               </ui:SendHotkey>
-              <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Send Hotkey" sap:VirtualizedContainerService.HintSize="449.6,133.6" sap2010:WorkflowViewState.IdRef="SendHotkey_3" Key="enter" KeyModifiers="None" SpecialKey="True">
-                <ui:SendHotkey.Target>
-                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="d5ebd81e-b993-457b-8a96-202a8decc422">
+              <ui:ImageFound DisplayName="Image Exists 'sigma_cambio_sm.exe  At...'" Found="[comprobante_cargado]" sap:VirtualizedContainerService.HintSize="526.4,107.2" sap2010:WorkflowViewState.IdRef="ImageFound_1">
+                <ui:ImageFound.Image>
+                  <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" InitialScalingFactor="1.25" Profile="Basic" TargetImageBase64="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" />
+                </ui:ImageFound.Image>
+                <ui:ImageFound.Target>
+                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="e5390c34-b6df-427c-b79d-7e5ddd80d73e" Selector="&lt;wnd app='sigma_cambio_sm.exe' cls='TMessageForm' title='Atención' /&gt;">
                     <ui:Target.TimeoutMS>
                       <InArgument x:TypeArguments="x:Int32" />
                     </ui:Target.TimeoutMS>
@@ -269,417 +262,531 @@
                       <InArgument x:TypeArguments="ui:WaitForReady" />
                     </ui:Target.WaitForReady>
                   </ui:Target>
-                </ui:SendHotkey.Target>
-              </ui:SendHotkey>
-              <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Send Hotkey" sap:VirtualizedContainerService.HintSize="449.6,133.6" sap2010:WorkflowViewState.IdRef="SendHotkey_4" Key="enter" KeyModifiers="None" SpecialKey="True">
-                <ui:SendHotkey.Target>
-                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="d5ebd81e-b993-457b-8a96-202a8decc422">
-                    <ui:Target.TimeoutMS>
-                      <InArgument x:TypeArguments="x:Int32" />
-                    </ui:Target.TimeoutMS>
-                    <ui:Target.WaitForReady>
-                      <InArgument x:TypeArguments="ui:WaitForReady" />
-                    </ui:Target.WaitForReady>
-                  </ui:Target>
-                </ui:SendHotkey.Target>
-              </ui:SendHotkey>
-              <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Send Hotkey" sap:VirtualizedContainerService.HintSize="449.6,133.6" sap2010:WorkflowViewState.IdRef="SendHotkey_5" Key="enter" KeyModifiers="None" SpecialKey="True">
-                <ui:SendHotkey.Target>
-                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="d5ebd81e-b993-457b-8a96-202a8decc422">
-                    <ui:Target.TimeoutMS>
-                      <InArgument x:TypeArguments="x:Int32" />
-                    </ui:Target.TimeoutMS>
-                    <ui:Target.WaitForReady>
-                      <InArgument x:TypeArguments="ui:WaitForReady" />
-                    </ui:Target.WaitForReady>
-                  </ui:Target>
-                </ui:SendHotkey.Target>
-              </ui:SendHotkey>
-              <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Send Hotkey" sap:VirtualizedContainerService.HintSize="449.6,133.6" sap2010:WorkflowViewState.IdRef="SendHotkey_6" Key="enter" KeyModifiers="None" SpecialKey="True">
-                <ui:SendHotkey.Target>
-                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="d5ebd81e-b993-457b-8a96-202a8decc422">
-                    <ui:Target.TimeoutMS>
-                      <InArgument x:TypeArguments="x:Int32" />
-                    </ui:Target.TimeoutMS>
-                    <ui:Target.WaitForReady>
-                      <InArgument x:TypeArguments="ui:WaitForReady" />
-                    </ui:Target.WaitForReady>
-                  </ui:Target>
-                </ui:SendHotkey.Target>
-              </ui:SendHotkey>
-              <ui:TypeInto ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" AlterIfDisabled="True" DeselectAfter="True" DisplayName="cuenta_desc_comerciales" EmptyField="True" sap:VirtualizedContainerService.HintSize="449.6,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_11" Text="[row(&quot;Cta Neto&quot;).ToString]">
-                <ui:TypeInto.Target>
-                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="425d5dba-073a-4a7f-a1f2-c9442f149729">
-                    <ui:Target.TimeoutMS>
-                      <InArgument x:TypeArguments="x:Int32" />
-                    </ui:Target.TimeoutMS>
-                    <ui:Target.WaitForReady>
-                      <InArgument x:TypeArguments="ui:WaitForReady" />
-                    </ui:Target.WaitForReady>
-                  </ui:Target>
-                </ui:TypeInto.Target>
-              </ui:TypeInto>
-              <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Send Hotkey" sap:VirtualizedContainerService.HintSize="449.6,133.6" sap2010:WorkflowViewState.IdRef="SendHotkey_10" Key="enter" KeyModifiers="None" SpecialKey="True">
-                <ui:SendHotkey.Target>
-                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="d5ebd81e-b993-457b-8a96-202a8decc422">
-                    <ui:Target.TimeoutMS>
-                      <InArgument x:TypeArguments="x:Int32" />
-                    </ui:Target.TimeoutMS>
-                    <ui:Target.WaitForReady>
-                      <InArgument x:TypeArguments="ui:WaitForReady" />
-                    </ui:Target.WaitForReady>
-                  </ui:Target>
-                </ui:SendHotkey.Target>
-              </ui:SendHotkey>
-              <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into" sap:VirtualizedContainerService.HintSize="450,135" sap2010:WorkflowViewState.IdRef="TypeInto_24" Text="[row(&quot;C. Costo&quot;).ToString]">
-                <ui:TypeInto.Target>
-                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="80a7c31d-a14a-434b-875e-f010ec6b967c">
-                    <ui:Target.TimeoutMS>
-                      <InArgument x:TypeArguments="x:Int32" />
-                    </ui:Target.TimeoutMS>
-                    <ui:Target.WaitForReady>
-                      <InArgument x:TypeArguments="ui:WaitForReady" />
-                    </ui:Target.WaitForReady>
-                  </ui:Target>
-                </ui:TypeInto.Target>
-              </ui:TypeInto>
-              <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Send Hotkey" sap:VirtualizedContainerService.HintSize="450,133" sap2010:WorkflowViewState.IdRef="SendHotkey_22" Key="enter" KeyModifiers="None" SpecialKey="True">
-                <ui:SendHotkey.Target>
-                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="d5ebd81e-b993-457b-8a96-202a8decc422">
-                    <ui:Target.TimeoutMS>
-                      <InArgument x:TypeArguments="x:Int32" />
-                    </ui:Target.TimeoutMS>
-                    <ui:Target.WaitForReady>
-                      <InArgument x:TypeArguments="ui:WaitForReady" />
-                    </ui:Target.WaitForReady>
-                  </ui:Target>
-                </ui:SendHotkey.Target>
-              </ui:SendHotkey>
-              <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into" sap:VirtualizedContainerService.HintSize="450,135" sap2010:WorkflowViewState.IdRef="TypeInto_23" Text="G21">
-                <ui:TypeInto.Target>
-                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="3e1c419c-6282-4df2-a487-912a9b35ed3f">
-                    <ui:Target.TimeoutMS>
-                      <InArgument x:TypeArguments="x:Int32" />
-                    </ui:Target.TimeoutMS>
-                    <ui:Target.WaitForReady>
-                      <InArgument x:TypeArguments="ui:WaitForReady" />
-                    </ui:Target.WaitForReady>
-                  </ui:Target>
-                </ui:TypeInto.Target>
-              </ui:TypeInto>
-              <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Send Hotkey" sap:VirtualizedContainerService.HintSize="450,133" sap2010:WorkflowViewState.IdRef="SendHotkey_21" Key="enter" KeyModifiers="None" SpecialKey="True">
-                <ui:SendHotkey.Target>
-                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="d5ebd81e-b993-457b-8a96-202a8decc422">
-                    <ui:Target.TimeoutMS>
-                      <InArgument x:TypeArguments="x:Int32" />
-                    </ui:Target.TimeoutMS>
-                    <ui:Target.WaitForReady>
-                      <InArgument x:TypeArguments="ui:WaitForReady" />
-                    </ui:Target.WaitForReady>
-                  </ui:Target>
-                </ui:SendHotkey.Target>
-              </ui:SendHotkey>
-              <ui:TypeInto ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" AlterIfDisabled="True" DeselectAfter="True" DisplayName="neto_desc_comerciales" EmptyField="True" sap:VirtualizedContainerService.HintSize="450,135" sap2010:WorkflowViewState.IdRef="TypeInto_12" Text="[row(&quot;Importe Neto&quot;).ToString]">
-                <ui:TypeInto.Target>
-                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="425d5dba-073a-4a7f-a1f2-c9442f149729">
-                    <ui:Target.TimeoutMS>
-                      <InArgument x:TypeArguments="x:Int32" />
-                    </ui:Target.TimeoutMS>
-                    <ui:Target.WaitForReady>
-                      <InArgument x:TypeArguments="ui:WaitForReady" />
-                    </ui:Target.WaitForReady>
-                  </ui:Target>
-                </ui:TypeInto.Target>
-              </ui:TypeInto>
-              <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Send Hotkey" sap:VirtualizedContainerService.HintSize="450,133" sap2010:WorkflowViewState.IdRef="SendHotkey_11" Key="enter" KeyModifiers="None" SpecialKey="True">
-                <ui:SendHotkey.Target>
-                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="d5ebd81e-b993-457b-8a96-202a8decc422">
-                    <ui:Target.TimeoutMS>
-                      <InArgument x:TypeArguments="x:Int32" />
-                    </ui:Target.TimeoutMS>
-                    <ui:Target.WaitForReady>
-                      <InArgument x:TypeArguments="ui:WaitForReady" />
-                    </ui:Target.WaitForReady>
-                  </ui:Target>
-                </ui:SendHotkey.Target>
-              </ui:SendHotkey>
-              <ui:TypeInto ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" AlterIfDisabled="True" DeselectAfter="True" DisplayName="neto_desc_comerciales" EmptyField="True" sap:VirtualizedContainerService.HintSize="450,135" sap2010:WorkflowViewState.IdRef="TypeInto_17" Text="[row(&quot;Observacion&quot;).ToString]">
-                <ui:TypeInto.Target>
-                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="425d5dba-073a-4a7f-a1f2-c9442f149729">
-                    <ui:Target.TimeoutMS>
-                      <InArgument x:TypeArguments="x:Int32" />
-                    </ui:Target.TimeoutMS>
-                    <ui:Target.WaitForReady>
-                      <InArgument x:TypeArguments="ui:WaitForReady" />
-                    </ui:Target.WaitForReady>
-                  </ui:Target>
-                </ui:TypeInto.Target>
-              </ui:TypeInto>
-              <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Send Hotkey" sap:VirtualizedContainerService.HintSize="450,133" sap2010:WorkflowViewState.IdRef="SendHotkey_12" Key="enter" KeyModifiers="None" SpecialKey="True">
-                <ui:SendHotkey.Target>
-                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="d5ebd81e-b993-457b-8a96-202a8decc422">
-                    <ui:Target.TimeoutMS>
-                      <InArgument x:TypeArguments="x:Int32" />
-                    </ui:Target.TimeoutMS>
-                    <ui:Target.WaitForReady>
-                      <InArgument x:TypeArguments="ui:WaitForReady" />
-                    </ui:Target.WaitForReady>
-                  </ui:Target>
-                </ui:SendHotkey.Target>
-              </ui:SendHotkey>
-              <ui:TypeInto ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" AlterIfDisabled="True" DeselectAfter="True" DisplayName="cuenta_iva_cf" EmptyField="True" sap:VirtualizedContainerService.HintSize="450,135" sap2010:WorkflowViewState.IdRef="TypeInto_13" Text="[row(&quot;Cta IVA&quot;).ToString]">
-                <ui:TypeInto.Target>
-                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="425d5dba-073a-4a7f-a1f2-c9442f149729">
-                    <ui:Target.TimeoutMS>
-                      <InArgument x:TypeArguments="x:Int32" />
-                    </ui:Target.TimeoutMS>
-                    <ui:Target.WaitForReady>
-                      <InArgument x:TypeArguments="ui:WaitForReady" />
-                    </ui:Target.WaitForReady>
-                  </ui:Target>
-                </ui:TypeInto.Target>
-              </ui:TypeInto>
-              <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Send Hotkey" sap:VirtualizedContainerService.HintSize="450,133" sap2010:WorkflowViewState.IdRef="SendHotkey_13" Key="enter" KeyModifiers="None" SpecialKey="True">
-                <ui:SendHotkey.Target>
-                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="d5ebd81e-b993-457b-8a96-202a8decc422">
-                    <ui:Target.TimeoutMS>
-                      <InArgument x:TypeArguments="x:Int32" />
-                    </ui:Target.TimeoutMS>
-                    <ui:Target.WaitForReady>
-                      <InArgument x:TypeArguments="ui:WaitForReady" />
-                    </ui:Target.WaitForReady>
-                  </ui:Target>
-                </ui:SendHotkey.Target>
-              </ui:SendHotkey>
-              <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Send Hotkey" sap:VirtualizedContainerService.HintSize="450,133" sap2010:WorkflowViewState.IdRef="SendHotkey_14" Key="enter" KeyModifiers="None" SpecialKey="True">
-                <ui:SendHotkey.Target>
-                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="d5ebd81e-b993-457b-8a96-202a8decc422">
-                    <ui:Target.TimeoutMS>
-                      <InArgument x:TypeArguments="x:Int32" />
-                    </ui:Target.TimeoutMS>
-                    <ui:Target.WaitForReady>
-                      <InArgument x:TypeArguments="ui:WaitForReady" />
-                    </ui:Target.WaitForReady>
-                  </ui:Target>
-                </ui:SendHotkey.Target>
-              </ui:SendHotkey>
-              <ui:TypeInto ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" AlterIfDisabled="True" DeselectAfter="True" DisplayName="monto_iva" EmptyField="True" sap:VirtualizedContainerService.HintSize="450,135" sap2010:WorkflowViewState.IdRef="TypeInto_14" Text="[row(&quot;Monto de IVA&quot;).ToString]">
-                <ui:TypeInto.Target>
-                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="425d5dba-073a-4a7f-a1f2-c9442f149729">
-                    <ui:Target.TimeoutMS>
-                      <InArgument x:TypeArguments="x:Int32" />
-                    </ui:Target.TimeoutMS>
-                    <ui:Target.WaitForReady>
-                      <InArgument x:TypeArguments="ui:WaitForReady" />
-                    </ui:Target.WaitForReady>
-                  </ui:Target>
-                </ui:TypeInto.Target>
-              </ui:TypeInto>
-              <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Send Hotkey" sap:VirtualizedContainerService.HintSize="450,133" sap2010:WorkflowViewState.IdRef="SendHotkey_15" Key="enter" KeyModifiers="None" SpecialKey="True">
-                <ui:SendHotkey.Target>
-                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="d5ebd81e-b993-457b-8a96-202a8decc422">
-                    <ui:Target.TimeoutMS>
-                      <InArgument x:TypeArguments="x:Int32" />
-                    </ui:Target.TimeoutMS>
-                    <ui:Target.WaitForReady>
-                      <InArgument x:TypeArguments="ui:WaitForReady" />
-                    </ui:Target.WaitForReady>
-                  </ui:Target>
-                </ui:SendHotkey.Target>
-              </ui:SendHotkey>
-              <ui:TypeInto ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" AlterIfDisabled="True" DeselectAfter="True" DisplayName="observacion_cuenta" EmptyField="True" sap:VirtualizedContainerService.HintSize="450,135" sap2010:WorkflowViewState.IdRef="TypeInto_18" Text="[row(&quot;Observacion&quot;).ToString]">
-                <ui:TypeInto.Target>
-                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="425d5dba-073a-4a7f-a1f2-c9442f149729">
-                    <ui:Target.TimeoutMS>
-                      <InArgument x:TypeArguments="x:Int32" />
-                    </ui:Target.TimeoutMS>
-                    <ui:Target.WaitForReady>
-                      <InArgument x:TypeArguments="ui:WaitForReady" />
-                    </ui:Target.WaitForReady>
-                  </ui:Target>
-                </ui:TypeInto.Target>
-              </ui:TypeInto>
-              <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Send Hotkey" sap:VirtualizedContainerService.HintSize="450,133" sap2010:WorkflowViewState.IdRef="SendHotkey_16" Key="enter" KeyModifiers="None" SpecialKey="True">
-                <ui:SendHotkey.Target>
-                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="d5ebd81e-b993-457b-8a96-202a8decc422">
-                    <ui:Target.TimeoutMS>
-                      <InArgument x:TypeArguments="x:Int32" />
-                    </ui:Target.TimeoutMS>
-                    <ui:Target.WaitForReady>
-                      <InArgument x:TypeArguments="ui:WaitForReady" />
-                    </ui:Target.WaitForReady>
-                  </ui:Target>
-                </ui:SendHotkey.Target>
-              </ui:SendHotkey>
-              <ui:TypeInto ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" AlterIfDisabled="True" DeselectAfter="True" DisplayName="cuenta_imp_internos" EmptyField="True" sap:VirtualizedContainerService.HintSize="450,135" sap2010:WorkflowViewState.IdRef="TypeInto_15" Text="[row(&quot;Cta Imp Interno&quot;).ToString]">
-                <ui:TypeInto.Target>
-                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="425d5dba-073a-4a7f-a1f2-c9442f149729">
-                    <ui:Target.TimeoutMS>
-                      <InArgument x:TypeArguments="x:Int32" />
-                    </ui:Target.TimeoutMS>
-                    <ui:Target.WaitForReady>
-                      <InArgument x:TypeArguments="ui:WaitForReady" />
-                    </ui:Target.WaitForReady>
-                  </ui:Target>
-                </ui:TypeInto.Target>
-              </ui:TypeInto>
-              <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Send Hotkey" sap:VirtualizedContainerService.HintSize="450,133" sap2010:WorkflowViewState.IdRef="SendHotkey_17" Key="enter" KeyModifiers="None" SpecialKey="True">
-                <ui:SendHotkey.Target>
-                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="d5ebd81e-b993-457b-8a96-202a8decc422">
-                    <ui:Target.TimeoutMS>
-                      <InArgument x:TypeArguments="x:Int32" />
-                    </ui:Target.TimeoutMS>
-                    <ui:Target.WaitForReady>
-                      <InArgument x:TypeArguments="ui:WaitForReady" />
-                    </ui:Target.WaitForReady>
-                  </ui:Target>
-                </ui:SendHotkey.Target>
-              </ui:SendHotkey>
-              <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="centro de costo" sap:VirtualizedContainerService.HintSize="450,135" sap2010:WorkflowViewState.IdRef="TypeInto_25" Text="[row(&quot;C. Costo&quot;).ToString]">
-                <ui:TypeInto.Target>
-                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="d5a990e9-b7c6-428f-823d-1196f5c5d9e9">
-                    <ui:Target.TimeoutMS>
-                      <InArgument x:TypeArguments="x:Int32" />
-                    </ui:Target.TimeoutMS>
-                    <ui:Target.WaitForReady>
-                      <InArgument x:TypeArguments="ui:WaitForReady" />
-                    </ui:Target.WaitForReady>
-                  </ui:Target>
-                </ui:TypeInto.Target>
-              </ui:TypeInto>
-              <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Send Hotkey" sap:VirtualizedContainerService.HintSize="450,133" sap2010:WorkflowViewState.IdRef="SendHotkey_18" Key="enter" KeyModifiers="None" SpecialKey="True">
-                <ui:SendHotkey.Target>
-                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="d5ebd81e-b993-457b-8a96-202a8decc422">
-                    <ui:Target.TimeoutMS>
-                      <InArgument x:TypeArguments="x:Int32" />
-                    </ui:Target.TimeoutMS>
-                    <ui:Target.WaitForReady>
-                      <InArgument x:TypeArguments="ui:WaitForReady" />
-                    </ui:Target.WaitForReady>
-                  </ui:Target>
-                </ui:SendHotkey.Target>
-              </ui:SendHotkey>
-              <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into" sap:VirtualizedContainerService.HintSize="450,135" sap2010:WorkflowViewState.IdRef="TypeInto_26" Text="IIN">
-                <ui:TypeInto.Target>
-                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="d8284abf-3161-480f-9b94-4077408abcc9">
-                    <ui:Target.TimeoutMS>
-                      <InArgument x:TypeArguments="x:Int32" />
-                    </ui:Target.TimeoutMS>
-                    <ui:Target.WaitForReady>
-                      <InArgument x:TypeArguments="ui:WaitForReady" />
-                    </ui:Target.WaitForReady>
-                  </ui:Target>
-                </ui:TypeInto.Target>
-              </ui:TypeInto>
-              <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Send Hotkey" sap:VirtualizedContainerService.HintSize="450,133" sap2010:WorkflowViewState.IdRef="SendHotkey_23" Key="enter" KeyModifiers="None" SpecialKey="True">
-                <ui:SendHotkey.Target>
-                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="d5ebd81e-b993-457b-8a96-202a8decc422">
-                    <ui:Target.TimeoutMS>
-                      <InArgument x:TypeArguments="x:Int32" />
-                    </ui:Target.TimeoutMS>
-                    <ui:Target.WaitForReady>
-                      <InArgument x:TypeArguments="ui:WaitForReady" />
-                    </ui:Target.WaitForReady>
-                  </ui:Target>
-                </ui:SendHotkey.Target>
-              </ui:SendHotkey>
-              <ui:TypeInto ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" AlterIfDisabled="True" DeselectAfter="True" DisplayName="monto_imp_interno" EmptyField="True" sap:VirtualizedContainerService.HintSize="450,135" sap2010:WorkflowViewState.IdRef="TypeInto_16" Text="[row(&quot;Monto de Imp Interno&quot;).ToString]">
-                <ui:TypeInto.Target>
-                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="425d5dba-073a-4a7f-a1f2-c9442f149729">
-                    <ui:Target.TimeoutMS>
-                      <InArgument x:TypeArguments="x:Int32" />
-                    </ui:Target.TimeoutMS>
-                    <ui:Target.WaitForReady>
-                      <InArgument x:TypeArguments="ui:WaitForReady" />
-                    </ui:Target.WaitForReady>
-                  </ui:Target>
-                </ui:TypeInto.Target>
-              </ui:TypeInto>
-              <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Send Hotkey" sap:VirtualizedContainerService.HintSize="450,133" sap2010:WorkflowViewState.IdRef="SendHotkey_20" Key="enter" KeyModifiers="None" SpecialKey="True">
-                <ui:SendHotkey.Target>
-                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="d5ebd81e-b993-457b-8a96-202a8decc422">
-                    <ui:Target.TimeoutMS>
-                      <InArgument x:TypeArguments="x:Int32" />
-                    </ui:Target.TimeoutMS>
-                    <ui:Target.WaitForReady>
-                      <InArgument x:TypeArguments="ui:WaitForReady" />
-                    </ui:Target.WaitForReady>
-                  </ui:Target>
-                </ui:SendHotkey.Target>
-              </ui:SendHotkey>
-              <ui:TypeInto ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" AlterIfDisabled="True" DeselectAfter="True" DisplayName="observacion_cuenta" EmptyField="True" sap:VirtualizedContainerService.HintSize="450,135" sap2010:WorkflowViewState.IdRef="TypeInto_19" Text="[row(&quot;Observacion&quot;).ToString]">
-                <ui:TypeInto.Target>
-                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="425d5dba-073a-4a7f-a1f2-c9442f149729">
-                    <ui:Target.TimeoutMS>
-                      <InArgument x:TypeArguments="x:Int32" />
-                    </ui:Target.TimeoutMS>
-                    <ui:Target.WaitForReady>
-                      <InArgument x:TypeArguments="ui:WaitForReady" />
-                    </ui:Target.WaitForReady>
-                  </ui:Target>
-                </ui:TypeInto.Target>
-              </ui:TypeInto>
-              <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'TBitBtn'" sap:VirtualizedContainerService.HintSize="450,107" sap2010:WorkflowViewState.IdRef="Click_3" KeyModifiers="None" MouseButton="BTN_LEFT">
-                <ui:Click.CursorPosition>
-                  <ui:CursorPosition Position="Center">
-                    <ui:CursorPosition.OffsetX>
-                      <InArgument x:TypeArguments="x:Int32" />
-                    </ui:CursorPosition.OffsetX>
-                    <ui:CursorPosition.OffsetY>
-                      <InArgument x:TypeArguments="x:Int32" />
-                    </ui:CursorPosition.OffsetY>
-                  </ui:CursorPosition>
-                </ui:Click.CursorPosition>
-                <ui:Click.Target>
-                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="e57a797a-8a8f-40c7-872f-264ab76ba2d9" InformativeScreenshot="ca67f2695be0c85cdba74d82d9fda0d7" Selector="&lt;wnd app='sigma_cambio_sm.exe' cls='TFPro_Carg' title='Carga de comprobantes de proveedores' /&gt;&lt;wnd aaname='Grabar' cls='TBitBtn' title='&amp;amp;Grabar' /&gt;">
-                    <ui:Target.TimeoutMS>
-                      <InArgument x:TypeArguments="x:Int32" />
-                    </ui:Target.TimeoutMS>
-                    <ui:Target.WaitForReady>
-                      <InArgument x:TypeArguments="ui:WaitForReady" />
-                    </ui:Target.WaitForReady>
-                  </ui:Target>
-                </ui:Click.Target>
-              </ui:Click>
-              <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'Button'" sap:VirtualizedContainerService.HintSize="450,107" sap2010:WorkflowViewState.IdRef="Click_4" KeyModifiers="None" MouseButton="BTN_LEFT">
-                <ui:Click.CursorPosition>
-                  <ui:CursorPosition Position="Center">
-                    <ui:CursorPosition.OffsetX>
-                      <InArgument x:TypeArguments="x:Int32" />
-                    </ui:CursorPosition.OffsetX>
-                    <ui:CursorPosition.OffsetY>
-                      <InArgument x:TypeArguments="x:Int32" />
-                    </ui:CursorPosition.OffsetY>
-                  </ui:CursorPosition>
-                </ui:Click.CursorPosition>
-                <ui:Click.Target>
-                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="b9b7e118-b4ff-4229-b07b-8e1ad2fcb492" InformativeScreenshot="507537ff3fcf36ad369c1cc954a52962" Selector="&lt;wnd app='sigma_cambio_sm.exe' cls='#32770' title='Atención' /&gt;&lt;wnd ctrlid='6' title='&amp;amp;Sí' /&gt;">
-                    <ui:Target.TimeoutMS>
-                      <InArgument x:TypeArguments="x:Int32" />
-                    </ui:Target.TimeoutMS>
-                    <ui:Target.WaitForReady>
-                      <InArgument x:TypeArguments="ui:WaitForReady" />
-                    </ui:Target.WaitForReady>
-                  </ui:Target>
-                </ui:Click.Target>
-              </ui:Click>
-              <Sequence DisplayName="Control" sap:VirtualizedContainerService.HintSize="450,799" sap2010:WorkflowViewState.IdRef="Sequence_5">
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-                <ui:WriteCell Cell="[&quot;A&quot; +row(&quot;Fila&quot;).ToString]" DisplayName="control_numero_factura" sap:VirtualizedContainerService.HintSize="388,116" sap2010:WorkflowViewState.IdRef="WriteCell_2" SheetName="control" Text="[row(&quot;Numero de Factura&quot;).ToString]" WorkbookPath="control_carga.xlsx" />
-                <Delay Duration="00:00:03" sap:VirtualizedContainerService.HintSize="388,90" sap2010:WorkflowViewState.IdRef="Delay_1" />
-                <ui:WriteCell Cell="[&quot;B&quot; +row(&quot;Fila&quot;).ToString]" DisplayName="control_importe_neto" sap:VirtualizedContainerService.HintSize="388,116" sap2010:WorkflowViewState.IdRef="WriteCell_3" SheetName="control" Text="[row(&quot;Importe Neto&quot;).ToString]" WorkbookPath="control_carga.xlsx" />
-                <Delay Duration="00:00:03" sap:VirtualizedContainerService.HintSize="388,90" sap2010:WorkflowViewState.IdRef="Delay_2" />
-                <ui:WriteCell Cell="[&quot;C&quot; +Row(&quot;Fila&quot;).ToString]" DisplayName="control_ok" sap:VirtualizedContainerService.HintSize="388,116" sap2010:WorkflowViewState.IdRef="WriteCell_1" SheetName="control" Text="Ok" WorkbookPath="control_carga.xlsx" />
-              </Sequence>
+                </ui:ImageFound.Target>
+              </ui:ImageFound>
+              <If Condition="[comprobante_cargado = False]" sap:VirtualizedContainerService.HintSize="526.4,8392.8" sap2010:WorkflowViewState.IdRef="If_1">
+                <If.Then>
+                  <Sequence sap:VirtualizedContainerService.HintSize="492.8,6783.2" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:TypeInto DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" AlterIfDisabled="True" ClickBeforeTyping="True" DeselectAfter="True" DisplayName="observacion" EmptyField="True" sap:VirtualizedContainerService.HintSize="449.6,156" sap2010:WorkflowViewState.IdRef="TypeInto_6" Text="[row(&quot;Observacion&quot;).ToString]">
+                      <ui:TypeInto.Target>
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="af792bb9-4875-41dc-8311-e862dcf956fa" InformativeScreenshot="48d2359e6fa2db5e3802064663856232" Selector="&lt;wnd app='sigma_cambio_sm.exe' cls='TFPro_Carg' title='Carga de comprobantes de proveedores' /&gt;&lt;wnd cls='TDBEdit' /&gt;">
+                          <ui:Target.TimeoutMS>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:Target.TimeoutMS>
+                          <ui:Target.WaitForReady>
+                            <InArgument x:TypeArguments="ui:WaitForReady" />
+                          </ui:Target.WaitForReady>
+                        </ui:Target>
+                      </ui:TypeInto.Target>
+                    </ui:TypeInto>
+                    <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Send Hotkey" sap:VirtualizedContainerService.HintSize="449.6,133.6" sap2010:WorkflowViewState.IdRef="SendHotkey_2" Key="enter" KeyModifiers="None" SpecialKey="True">
+                      <ui:SendHotkey.Target>
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="d5ebd81e-b993-457b-8a96-202a8decc422">
+                          <ui:Target.TimeoutMS>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:Target.TimeoutMS>
+                          <ui:Target.WaitForReady>
+                            <InArgument x:TypeArguments="ui:WaitForReady" />
+                          </ui:Target.WaitForReady>
+                        </ui:Target>
+                      </ui:SendHotkey.Target>
+                    </ui:SendHotkey>
+                    <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Send Hotkey" sap:VirtualizedContainerService.HintSize="449.6,133.6" sap2010:WorkflowViewState.IdRef="SendHotkey_3" Key="enter" KeyModifiers="None" SpecialKey="True">
+                      <ui:SendHotkey.Target>
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="d5ebd81e-b993-457b-8a96-202a8decc422">
+                          <ui:Target.TimeoutMS>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:Target.TimeoutMS>
+                          <ui:Target.WaitForReady>
+                            <InArgument x:TypeArguments="ui:WaitForReady" />
+                          </ui:Target.WaitForReady>
+                        </ui:Target>
+                      </ui:SendHotkey.Target>
+                    </ui:SendHotkey>
+                    <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Send Hotkey" sap:VirtualizedContainerService.HintSize="449.6,133.6" sap2010:WorkflowViewState.IdRef="SendHotkey_4" Key="enter" KeyModifiers="None" SpecialKey="True">
+                      <ui:SendHotkey.Target>
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="d5ebd81e-b993-457b-8a96-202a8decc422">
+                          <ui:Target.TimeoutMS>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:Target.TimeoutMS>
+                          <ui:Target.WaitForReady>
+                            <InArgument x:TypeArguments="ui:WaitForReady" />
+                          </ui:Target.WaitForReady>
+                        </ui:Target>
+                      </ui:SendHotkey.Target>
+                    </ui:SendHotkey>
+                    <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Send Hotkey" sap:VirtualizedContainerService.HintSize="449.6,133.6" sap2010:WorkflowViewState.IdRef="SendHotkey_5" Key="enter" KeyModifiers="None" SpecialKey="True">
+                      <ui:SendHotkey.Target>
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="d5ebd81e-b993-457b-8a96-202a8decc422">
+                          <ui:Target.TimeoutMS>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:Target.TimeoutMS>
+                          <ui:Target.WaitForReady>
+                            <InArgument x:TypeArguments="ui:WaitForReady" />
+                          </ui:Target.WaitForReady>
+                        </ui:Target>
+                      </ui:SendHotkey.Target>
+                    </ui:SendHotkey>
+                    <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Send Hotkey" sap:VirtualizedContainerService.HintSize="449.6,133.6" sap2010:WorkflowViewState.IdRef="SendHotkey_6" Key="enter" KeyModifiers="None" SpecialKey="True">
+                      <ui:SendHotkey.Target>
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="d5ebd81e-b993-457b-8a96-202a8decc422">
+                          <ui:Target.TimeoutMS>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:Target.TimeoutMS>
+                          <ui:Target.WaitForReady>
+                            <InArgument x:TypeArguments="ui:WaitForReady" />
+                          </ui:Target.WaitForReady>
+                        </ui:Target>
+                      </ui:SendHotkey.Target>
+                    </ui:SendHotkey>
+                    <ui:TypeInto ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" AlterIfDisabled="True" DeselectAfter="True" DisplayName="cuenta_desc_comerciales" EmptyField="True" sap:VirtualizedContainerService.HintSize="449.6,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_11" Text="[row(&quot;Cta Neto&quot;).ToString]">
+                      <ui:TypeInto.Target>
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="425d5dba-073a-4a7f-a1f2-c9442f149729">
+                          <ui:Target.TimeoutMS>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:Target.TimeoutMS>
+                          <ui:Target.WaitForReady>
+                            <InArgument x:TypeArguments="ui:WaitForReady" />
+                          </ui:Target.WaitForReady>
+                        </ui:Target>
+                      </ui:TypeInto.Target>
+                    </ui:TypeInto>
+                    <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Send Hotkey" sap:VirtualizedContainerService.HintSize="449.6,133.6" sap2010:WorkflowViewState.IdRef="SendHotkey_10" Key="enter" KeyModifiers="None" SpecialKey="True">
+                      <ui:SendHotkey.Target>
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="d5ebd81e-b993-457b-8a96-202a8decc422">
+                          <ui:Target.TimeoutMS>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:Target.TimeoutMS>
+                          <ui:Target.WaitForReady>
+                            <InArgument x:TypeArguments="ui:WaitForReady" />
+                          </ui:Target.WaitForReady>
+                        </ui:Target>
+                      </ui:SendHotkey.Target>
+                    </ui:SendHotkey>
+                    <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into" sap:VirtualizedContainerService.HintSize="449.6,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_24" Text="[row(&quot;C. Costo&quot;).ToString]">
+                      <ui:TypeInto.Target>
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="80a7c31d-a14a-434b-875e-f010ec6b967c">
+                          <ui:Target.TimeoutMS>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:Target.TimeoutMS>
+                          <ui:Target.WaitForReady>
+                            <InArgument x:TypeArguments="ui:WaitForReady" />
+                          </ui:Target.WaitForReady>
+                        </ui:Target>
+                      </ui:TypeInto.Target>
+                    </ui:TypeInto>
+                    <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Send Hotkey" sap:VirtualizedContainerService.HintSize="449.6,133.6" sap2010:WorkflowViewState.IdRef="SendHotkey_22" Key="enter" KeyModifiers="None" SpecialKey="True">
+                      <ui:SendHotkey.Target>
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="d5ebd81e-b993-457b-8a96-202a8decc422">
+                          <ui:Target.TimeoutMS>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:Target.TimeoutMS>
+                          <ui:Target.WaitForReady>
+                            <InArgument x:TypeArguments="ui:WaitForReady" />
+                          </ui:Target.WaitForReady>
+                        </ui:Target>
+                      </ui:SendHotkey.Target>
+                    </ui:SendHotkey>
+                    <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into" sap:VirtualizedContainerService.HintSize="449.6,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_23" Text="G21">
+                      <ui:TypeInto.Target>
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="3e1c419c-6282-4df2-a487-912a9b35ed3f">
+                          <ui:Target.TimeoutMS>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:Target.TimeoutMS>
+                          <ui:Target.WaitForReady>
+                            <InArgument x:TypeArguments="ui:WaitForReady" />
+                          </ui:Target.WaitForReady>
+                        </ui:Target>
+                      </ui:TypeInto.Target>
+                    </ui:TypeInto>
+                    <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Send Hotkey" sap:VirtualizedContainerService.HintSize="449.6,133.6" sap2010:WorkflowViewState.IdRef="SendHotkey_21" Key="enter" KeyModifiers="None" SpecialKey="True">
+                      <ui:SendHotkey.Target>
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="d5ebd81e-b993-457b-8a96-202a8decc422">
+                          <ui:Target.TimeoutMS>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:Target.TimeoutMS>
+                          <ui:Target.WaitForReady>
+                            <InArgument x:TypeArguments="ui:WaitForReady" />
+                          </ui:Target.WaitForReady>
+                        </ui:Target>
+                      </ui:SendHotkey.Target>
+                    </ui:SendHotkey>
+                    <ui:TypeInto ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" AlterIfDisabled="True" DeselectAfter="True" DisplayName="neto_desc_comerciales" EmptyField="True" sap:VirtualizedContainerService.HintSize="449.6,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_12" Text="[row(&quot;Importe Neto&quot;).ToString]">
+                      <ui:TypeInto.Target>
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="425d5dba-073a-4a7f-a1f2-c9442f149729">
+                          <ui:Target.TimeoutMS>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:Target.TimeoutMS>
+                          <ui:Target.WaitForReady>
+                            <InArgument x:TypeArguments="ui:WaitForReady" />
+                          </ui:Target.WaitForReady>
+                        </ui:Target>
+                      </ui:TypeInto.Target>
+                    </ui:TypeInto>
+                    <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Send Hotkey" sap:VirtualizedContainerService.HintSize="449.6,133.6" sap2010:WorkflowViewState.IdRef="SendHotkey_11" Key="enter" KeyModifiers="None" SpecialKey="True">
+                      <ui:SendHotkey.Target>
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="d5ebd81e-b993-457b-8a96-202a8decc422">
+                          <ui:Target.TimeoutMS>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:Target.TimeoutMS>
+                          <ui:Target.WaitForReady>
+                            <InArgument x:TypeArguments="ui:WaitForReady" />
+                          </ui:Target.WaitForReady>
+                        </ui:Target>
+                      </ui:SendHotkey.Target>
+                    </ui:SendHotkey>
+                    <ui:TypeInto ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" AlterIfDisabled="True" DeselectAfter="True" DisplayName="neto_desc_comerciales" EmptyField="True" sap:VirtualizedContainerService.HintSize="449.6,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_17" Text="[row(&quot;Observacion&quot;).ToString]">
+                      <ui:TypeInto.Target>
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="425d5dba-073a-4a7f-a1f2-c9442f149729">
+                          <ui:Target.TimeoutMS>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:Target.TimeoutMS>
+                          <ui:Target.WaitForReady>
+                            <InArgument x:TypeArguments="ui:WaitForReady" />
+                          </ui:Target.WaitForReady>
+                        </ui:Target>
+                      </ui:TypeInto.Target>
+                    </ui:TypeInto>
+                    <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Send Hotkey" sap:VirtualizedContainerService.HintSize="449.6,133.6" sap2010:WorkflowViewState.IdRef="SendHotkey_12" Key="enter" KeyModifiers="None" SpecialKey="True">
+                      <ui:SendHotkey.Target>
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="d5ebd81e-b993-457b-8a96-202a8decc422">
+                          <ui:Target.TimeoutMS>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:Target.TimeoutMS>
+                          <ui:Target.WaitForReady>
+                            <InArgument x:TypeArguments="ui:WaitForReady" />
+                          </ui:Target.WaitForReady>
+                        </ui:Target>
+                      </ui:SendHotkey.Target>
+                    </ui:SendHotkey>
+                    <ui:TypeInto ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" AlterIfDisabled="True" DeselectAfter="True" DisplayName="cuenta_iva_cf" EmptyField="True" sap:VirtualizedContainerService.HintSize="449.6,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_13" Text="[row(&quot;Cta IVA&quot;).ToString]">
+                      <ui:TypeInto.Target>
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="425d5dba-073a-4a7f-a1f2-c9442f149729">
+                          <ui:Target.TimeoutMS>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:Target.TimeoutMS>
+                          <ui:Target.WaitForReady>
+                            <InArgument x:TypeArguments="ui:WaitForReady" />
+                          </ui:Target.WaitForReady>
+                        </ui:Target>
+                      </ui:TypeInto.Target>
+                    </ui:TypeInto>
+                    <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Send Hotkey" sap:VirtualizedContainerService.HintSize="449.6,133.6" sap2010:WorkflowViewState.IdRef="SendHotkey_13" Key="enter" KeyModifiers="None" SpecialKey="True">
+                      <ui:SendHotkey.Target>
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="d5ebd81e-b993-457b-8a96-202a8decc422">
+                          <ui:Target.TimeoutMS>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:Target.TimeoutMS>
+                          <ui:Target.WaitForReady>
+                            <InArgument x:TypeArguments="ui:WaitForReady" />
+                          </ui:Target.WaitForReady>
+                        </ui:Target>
+                      </ui:SendHotkey.Target>
+                    </ui:SendHotkey>
+                    <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Send Hotkey" sap:VirtualizedContainerService.HintSize="449.6,133.6" sap2010:WorkflowViewState.IdRef="SendHotkey_14" Key="enter" KeyModifiers="None" SpecialKey="True">
+                      <ui:SendHotkey.Target>
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="d5ebd81e-b993-457b-8a96-202a8decc422">
+                          <ui:Target.TimeoutMS>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:Target.TimeoutMS>
+                          <ui:Target.WaitForReady>
+                            <InArgument x:TypeArguments="ui:WaitForReady" />
+                          </ui:Target.WaitForReady>
+                        </ui:Target>
+                      </ui:SendHotkey.Target>
+                    </ui:SendHotkey>
+                    <ui:TypeInto ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" AlterIfDisabled="True" DeselectAfter="True" DisplayName="monto_iva" EmptyField="True" sap:VirtualizedContainerService.HintSize="449.6,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_14" Text="[row(&quot;Monto de IVA&quot;).ToString]">
+                      <ui:TypeInto.Target>
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="425d5dba-073a-4a7f-a1f2-c9442f149729">
+                          <ui:Target.TimeoutMS>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:Target.TimeoutMS>
+                          <ui:Target.WaitForReady>
+                            <InArgument x:TypeArguments="ui:WaitForReady" />
+                          </ui:Target.WaitForReady>
+                        </ui:Target>
+                      </ui:TypeInto.Target>
+                    </ui:TypeInto>
+                    <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Send Hotkey" sap:VirtualizedContainerService.HintSize="449.6,133.6" sap2010:WorkflowViewState.IdRef="SendHotkey_15" Key="enter" KeyModifiers="None" SpecialKey="True">
+                      <ui:SendHotkey.Target>
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="d5ebd81e-b993-457b-8a96-202a8decc422">
+                          <ui:Target.TimeoutMS>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:Target.TimeoutMS>
+                          <ui:Target.WaitForReady>
+                            <InArgument x:TypeArguments="ui:WaitForReady" />
+                          </ui:Target.WaitForReady>
+                        </ui:Target>
+                      </ui:SendHotkey.Target>
+                    </ui:SendHotkey>
+                    <ui:TypeInto ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" AlterIfDisabled="True" DeselectAfter="True" DisplayName="observacion_cuenta" EmptyField="True" sap:VirtualizedContainerService.HintSize="449.6,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_18" Text="[row(&quot;Observacion&quot;).ToString]">
+                      <ui:TypeInto.Target>
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="425d5dba-073a-4a7f-a1f2-c9442f149729">
+                          <ui:Target.TimeoutMS>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:Target.TimeoutMS>
+                          <ui:Target.WaitForReady>
+                            <InArgument x:TypeArguments="ui:WaitForReady" />
+                          </ui:Target.WaitForReady>
+                        </ui:Target>
+                      </ui:TypeInto.Target>
+                    </ui:TypeInto>
+                    <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Send Hotkey" sap:VirtualizedContainerService.HintSize="449.6,133.6" sap2010:WorkflowViewState.IdRef="SendHotkey_16" Key="enter" KeyModifiers="None" SpecialKey="True">
+                      <ui:SendHotkey.Target>
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="d5ebd81e-b993-457b-8a96-202a8decc422">
+                          <ui:Target.TimeoutMS>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:Target.TimeoutMS>
+                          <ui:Target.WaitForReady>
+                            <InArgument x:TypeArguments="ui:WaitForReady" />
+                          </ui:Target.WaitForReady>
+                        </ui:Target>
+                      </ui:SendHotkey.Target>
+                    </ui:SendHotkey>
+                    <ui:TypeInto ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" AlterIfDisabled="True" DeselectAfter="True" DisplayName="cuenta_imp_internos" EmptyField="True" sap:VirtualizedContainerService.HintSize="449.6,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_15" Text="[row(&quot;Cta Imp Interno&quot;).ToString]">
+                      <ui:TypeInto.Target>
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="425d5dba-073a-4a7f-a1f2-c9442f149729">
+                          <ui:Target.TimeoutMS>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:Target.TimeoutMS>
+                          <ui:Target.WaitForReady>
+                            <InArgument x:TypeArguments="ui:WaitForReady" />
+                          </ui:Target.WaitForReady>
+                        </ui:Target>
+                      </ui:TypeInto.Target>
+                    </ui:TypeInto>
+                    <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Send Hotkey" sap:VirtualizedContainerService.HintSize="449.6,133.6" sap2010:WorkflowViewState.IdRef="SendHotkey_17" Key="enter" KeyModifiers="None" SpecialKey="True">
+                      <ui:SendHotkey.Target>
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="d5ebd81e-b993-457b-8a96-202a8decc422">
+                          <ui:Target.TimeoutMS>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:Target.TimeoutMS>
+                          <ui:Target.WaitForReady>
+                            <InArgument x:TypeArguments="ui:WaitForReady" />
+                          </ui:Target.WaitForReady>
+                        </ui:Target>
+                      </ui:SendHotkey.Target>
+                    </ui:SendHotkey>
+                    <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="centro de costo" sap:VirtualizedContainerService.HintSize="449.6,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_25" Text="[row(&quot;C. Costo&quot;).ToString]">
+                      <ui:TypeInto.Target>
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="d5a990e9-b7c6-428f-823d-1196f5c5d9e9">
+                          <ui:Target.TimeoutMS>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:Target.TimeoutMS>
+                          <ui:Target.WaitForReady>
+                            <InArgument x:TypeArguments="ui:WaitForReady" />
+                          </ui:Target.WaitForReady>
+                        </ui:Target>
+                      </ui:TypeInto.Target>
+                    </ui:TypeInto>
+                    <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Send Hotkey" sap:VirtualizedContainerService.HintSize="449.6,133.6" sap2010:WorkflowViewState.IdRef="SendHotkey_18" Key="enter" KeyModifiers="None" SpecialKey="True">
+                      <ui:SendHotkey.Target>
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="d5ebd81e-b993-457b-8a96-202a8decc422">
+                          <ui:Target.TimeoutMS>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:Target.TimeoutMS>
+                          <ui:Target.WaitForReady>
+                            <InArgument x:TypeArguments="ui:WaitForReady" />
+                          </ui:Target.WaitForReady>
+                        </ui:Target>
+                      </ui:SendHotkey.Target>
+                    </ui:SendHotkey>
+                    <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into" sap:VirtualizedContainerService.HintSize="449.6,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_26" Text="IIN">
+                      <ui:TypeInto.Target>
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="d8284abf-3161-480f-9b94-4077408abcc9">
+                          <ui:Target.TimeoutMS>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:Target.TimeoutMS>
+                          <ui:Target.WaitForReady>
+                            <InArgument x:TypeArguments="ui:WaitForReady" />
+                          </ui:Target.WaitForReady>
+                        </ui:Target>
+                      </ui:TypeInto.Target>
+                    </ui:TypeInto>
+                    <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Send Hotkey" sap:VirtualizedContainerService.HintSize="449.6,133.6" sap2010:WorkflowViewState.IdRef="SendHotkey_23" Key="enter" KeyModifiers="None" SpecialKey="True">
+                      <ui:SendHotkey.Target>
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="d5ebd81e-b993-457b-8a96-202a8decc422">
+                          <ui:Target.TimeoutMS>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:Target.TimeoutMS>
+                          <ui:Target.WaitForReady>
+                            <InArgument x:TypeArguments="ui:WaitForReady" />
+                          </ui:Target.WaitForReady>
+                        </ui:Target>
+                      </ui:SendHotkey.Target>
+                    </ui:SendHotkey>
+                    <ui:TypeInto ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" AlterIfDisabled="True" DeselectAfter="True" DisplayName="monto_imp_interno" EmptyField="True" sap:VirtualizedContainerService.HintSize="449.6,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_16" Text="[row(&quot;Monto de Imp Interno&quot;).ToString]">
+                      <ui:TypeInto.Target>
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="425d5dba-073a-4a7f-a1f2-c9442f149729">
+                          <ui:Target.TimeoutMS>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:Target.TimeoutMS>
+                          <ui:Target.WaitForReady>
+                            <InArgument x:TypeArguments="ui:WaitForReady" />
+                          </ui:Target.WaitForReady>
+                        </ui:Target>
+                      </ui:TypeInto.Target>
+                    </ui:TypeInto>
+                    <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Send Hotkey" sap:VirtualizedContainerService.HintSize="449.6,133.6" sap2010:WorkflowViewState.IdRef="SendHotkey_20" Key="enter" KeyModifiers="None" SpecialKey="True">
+                      <ui:SendHotkey.Target>
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="d5ebd81e-b993-457b-8a96-202a8decc422">
+                          <ui:Target.TimeoutMS>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:Target.TimeoutMS>
+                          <ui:Target.WaitForReady>
+                            <InArgument x:TypeArguments="ui:WaitForReady" />
+                          </ui:Target.WaitForReady>
+                        </ui:Target>
+                      </ui:SendHotkey.Target>
+                    </ui:SendHotkey>
+                    <ui:TypeInto ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" AlterIfDisabled="True" DeselectAfter="True" DisplayName="observacion_cuenta" EmptyField="True" sap:VirtualizedContainerService.HintSize="449.6,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_19" Text="[row(&quot;Observacion&quot;).ToString]">
+                      <ui:TypeInto.Target>
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="425d5dba-073a-4a7f-a1f2-c9442f149729">
+                          <ui:Target.TimeoutMS>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:Target.TimeoutMS>
+                          <ui:Target.WaitForReady>
+                            <InArgument x:TypeArguments="ui:WaitForReady" />
+                          </ui:Target.WaitForReady>
+                        </ui:Target>
+                      </ui:TypeInto.Target>
+                    </ui:TypeInto>
+                    <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'TBitBtn'" sap:VirtualizedContainerService.HintSize="449.6,107.2" sap2010:WorkflowViewState.IdRef="Click_3" KeyModifiers="None" MouseButton="BTN_LEFT">
+                      <ui:Click.CursorPosition>
+                        <ui:CursorPosition Position="Center">
+                          <ui:CursorPosition.OffsetX>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:CursorPosition.OffsetX>
+                          <ui:CursorPosition.OffsetY>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:CursorPosition.OffsetY>
+                        </ui:CursorPosition>
+                      </ui:Click.CursorPosition>
+                      <ui:Click.Target>
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="e57a797a-8a8f-40c7-872f-264ab76ba2d9" InformativeScreenshot="ca67f2695be0c85cdba74d82d9fda0d7" Selector="&lt;wnd app='sigma_cambio_sm.exe' cls='TFPro_Carg' title='Carga de comprobantes de proveedores' /&gt;&lt;wnd aaname='Grabar' cls='TBitBtn' title='&amp;amp;Grabar' /&gt;">
+                          <ui:Target.TimeoutMS>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:Target.TimeoutMS>
+                          <ui:Target.WaitForReady>
+                            <InArgument x:TypeArguments="ui:WaitForReady" />
+                          </ui:Target.WaitForReady>
+                        </ui:Target>
+                      </ui:Click.Target>
+                    </ui:Click>
+                    <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'Button'" sap:VirtualizedContainerService.HintSize="449.6,107.2" sap2010:WorkflowViewState.IdRef="Click_4" KeyModifiers="None" MouseButton="BTN_LEFT">
+                      <ui:Click.CursorPosition>
+                        <ui:CursorPosition Position="Center">
+                          <ui:CursorPosition.OffsetX>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:CursorPosition.OffsetX>
+                          <ui:CursorPosition.OffsetY>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:CursorPosition.OffsetY>
+                        </ui:CursorPosition>
+                      </ui:Click.CursorPosition>
+                      <ui:Click.Target>
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="b9b7e118-b4ff-4229-b07b-8e1ad2fcb492" InformativeScreenshot="507537ff3fcf36ad369c1cc954a52962" Selector="&lt;wnd app='sigma_cambio_sm.exe' cls='#32770' title='Atención' /&gt;&lt;wnd ctrlid='6' title='&amp;amp;Sí' /&gt;">
+                          <ui:Target.TimeoutMS>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:Target.TimeoutMS>
+                          <ui:Target.WaitForReady>
+                            <InArgument x:TypeArguments="ui:WaitForReady" />
+                          </ui:Target.WaitForReady>
+                        </ui:Target>
+                      </ui:Click.Target>
+                    </ui:Click>
+                    <Sequence DisplayName="Control" sap:VirtualizedContainerService.HintSize="449.6,800.8" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ui:WriteCell Cell="[&quot;A&quot; +row(&quot;Fila&quot;).ToString]" DisplayName="control_numero_factura" sap:VirtualizedContainerService.HintSize="387.2,116" sap2010:WorkflowViewState.IdRef="WriteCell_4" SheetName="control" Text="[row(&quot;Numero de Factura&quot;).ToString]" WorkbookPath="control_carga.xlsx" />
+                      <Delay Duration="00:00:03" sap:VirtualizedContainerService.HintSize="387.2,90.4" sap2010:WorkflowViewState.IdRef="Delay_3" />
+                      <ui:WriteCell Cell="[&quot;B&quot; +row(&quot;Fila&quot;).ToString]" DisplayName="control_importe_neto" sap:VirtualizedContainerService.HintSize="387.2,116" sap2010:WorkflowViewState.IdRef="WriteCell_5" SheetName="control" Text="[row(&quot;Importe Neto&quot;).ToString]" WorkbookPath="control_carga.xlsx" />
+                      <Delay Duration="00:00:03" sap:VirtualizedContainerService.HintSize="387.2,90.4" sap2010:WorkflowViewState.IdRef="Delay_4" />
+                      <ui:WriteCell Cell="[&quot;C&quot; +Row(&quot;Fila&quot;).ToString]" DisplayName="control_ok" sap:VirtualizedContainerService.HintSize="387.2,116" sap2010:WorkflowViewState.IdRef="WriteCell_6" SheetName="control" Text="Ok" WorkbookPath="control_carga.xlsx" />
+                    </Sequence>
+                  </Sequence>
+                </If.Then>
+                <If.Else>
+                  <Sequence sap:VirtualizedContainerService.HintSize="492.8,1426.4" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Send Hotkey 'sigma_cambio_sm.exe  At...'" sap:VirtualizedContainerService.HintSize="449.6,154.4" sap2010:WorkflowViewState.IdRef="SendHotkey_24" Key="enter" KeyModifiers="None" SpecialKey="True">
+                      <ui:SendHotkey.Target>
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="14d401ce-0c3c-46de-a359-09d339f21008" InformativeScreenshot="714b28e8c44099c8fc892c1f434427d2" Selector="&lt;wnd app='sigma_cambio_sm.exe' cls='TMessageForm' title='Atención' /&gt;">
+                          <ui:Target.TimeoutMS>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:Target.TimeoutMS>
+                          <ui:Target.WaitForReady>
+                            <InArgument x:TypeArguments="ui:WaitForReady" />
+                          </ui:Target.WaitForReady>
+                        </ui:Target>
+                      </ui:SendHotkey.Target>
+                    </ui:SendHotkey>
+                    <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Send Hotkey 'TDBEdit'" sap:VirtualizedContainerService.HintSize="449.6,154.4" sap2010:WorkflowViewState.IdRef="SendHotkey_25" Key="back" KeyModifiers="None" SpecialKey="True">
+                      <ui:SendHotkey.Target>
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="9b3e929c-1930-4605-842d-b34aeaf48af5" InformativeScreenshot="663c8b4e12febc0221dc0d325b8766e2" Selector="&lt;wnd app='sigma_cambio_sm.exe' cls='TFPro_Carg' title='Carga de comprobantes de proveedores' /&gt;&lt;wnd cls='TDBEdit' idx='2' /&gt;">
+                          <ui:Target.TimeoutMS>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:Target.TimeoutMS>
+                          <ui:Target.WaitForReady>
+                            <InArgument x:TypeArguments="ui:WaitForReady" />
+                          </ui:Target.WaitForReady>
+                        </ui:Target>
+                      </ui:SendHotkey.Target>
+                    </ui:SendHotkey>
+                    <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'TBitBtn'" sap:VirtualizedContainerService.HintSize="449.6,107.2" sap2010:WorkflowViewState.IdRef="Click_5" KeyModifiers="None" MouseButton="BTN_LEFT">
+                      <ui:Click.CursorPosition>
+                        <ui:CursorPosition Position="Center">
+                          <ui:CursorPosition.OffsetX>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:CursorPosition.OffsetX>
+                          <ui:CursorPosition.OffsetY>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:CursorPosition.OffsetY>
+                        </ui:CursorPosition>
+                      </ui:Click.CursorPosition>
+                      <ui:Click.Target>
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="0a54a11a-55ec-4f75-a07a-850c7bb81f01" InformativeScreenshot="c74e3b7a5d58d531f83d080ddd7d98ea" Selector="&lt;wnd app='sigma_cambio_sm.exe' cls='TFPro_Carg' title='Carga de comprobantes de proveedores' /&gt;&lt;wnd aaname='Cancelar' cls='TBitBtn' title='&amp;amp;Cancelar' /&gt;">
+                          <ui:Target.TimeoutMS>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:Target.TimeoutMS>
+                          <ui:Target.WaitForReady>
+                            <InArgument x:TypeArguments="ui:WaitForReady" />
+                          </ui:Target.WaitForReady>
+                        </ui:Target>
+                      </ui:Click.Target>
+                    </ui:Click>
+                    <Sequence DisplayName="Control" sap:VirtualizedContainerService.HintSize="449.6,800.8" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ui:WriteCell Cell="[&quot;A&quot; +row(&quot;Fila&quot;).ToString]" DisplayName="control_numero_factura" sap:VirtualizedContainerService.HintSize="387.2,116" sap2010:WorkflowViewState.IdRef="WriteCell_7" SheetName="control" Text="[row(&quot;Numero de Factura&quot;).ToString]" WorkbookPath="control_carga.xlsx" />
+                      <Delay Duration="00:00:03" sap:VirtualizedContainerService.HintSize="387.2,90.4" sap2010:WorkflowViewState.IdRef="Delay_5" />
+                      <ui:WriteCell Cell="[&quot;B&quot; +row(&quot;Fila&quot;).ToString]" DisplayName="control_importe_neto" sap:VirtualizedContainerService.HintSize="387.2,116" sap2010:WorkflowViewState.IdRef="WriteCell_8" SheetName="control" Text="[row(&quot;Importe Neto&quot;).ToString]" WorkbookPath="control_carga.xlsx" />
+                      <Delay Duration="00:00:03" sap:VirtualizedContainerService.HintSize="387.2,90.4" sap2010:WorkflowViewState.IdRef="Delay_6" />
+                      <ui:WriteCell Cell="[&quot;C&quot; +Row(&quot;Fila&quot;).ToString]" DisplayName="control_ok" sap:VirtualizedContainerService.HintSize="387.2,116" sap2010:WorkflowViewState.IdRef="WriteCell_9" SheetName="control" Text="comprbante ya cargado" WorkbookPath="control_carga.xlsx" />
+                    </Sequence>
+                  </Sequence>
+                </If.Else>
+              </If>
             </Sequence>
           </ActivityAction>
         </ui:ForEachRow.Body>
       </ui:ForEachRow>
     </Sequence>
-    <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="608,85" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[&quot;Proceso terminado&quot;]" />
+    <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="684.8,85.6" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[&quot;Proceso terminado&quot;]" />
   </Sequence>
 </Activity>
